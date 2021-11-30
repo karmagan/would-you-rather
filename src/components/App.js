@@ -14,7 +14,7 @@ class App extends React.Component {
         <Login />
         {this.props.authedUser && (
           <div>
-            <p>Welcome {this.props.authedUser.name}</p>
+            Welcome {this.props.authedUser.name}
             <PollsHome />
           </div>
         )}

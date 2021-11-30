@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.polls-home{
+  margin:auto;
+  width:800px;
+}
+.polls-home button{
+  width:50%;
+  background:transparent;
+  border:solid;
+}
+button:disabled{
+  background:lightgrey;
+}
+
+.polls-list{
+  list-style: none;
+}

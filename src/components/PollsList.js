@@ -7,7 +7,7 @@ class PollsList extends React.Component {
     const { polls } = this.props;
     return (
       <div>
-        <ul>
+        <ul className='polls-list'>
           {polls.map((poll) => (
             <li key={poll.id}>
               <Poll poll={poll} />

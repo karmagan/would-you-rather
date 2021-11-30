@@ -1,34 +1,30 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setAuthedUser } from "../actions/authedUser";
+import { logout, setAuthedUser } from "../actions/authedUser";
 
 class Login extends React.Component {
   state = {
-    user: "",
+    user: null,
   };
   handleChange = (e) => {
     const user = e.target.value;
-
-    this.setState(() => ({
-      user,
-    }))
+    this.setState({ user });
   };
-  handleSubmit = (e) => {
+  handleLogin = (e) => {
     e.preventDefault();
+    const user = this.state.user;
+    this.props.dispatch(setAuthedUser(user));
+  };
 
-    const { user } = this.state;
-    const { dispatch } = this.props;
-    // todo: Add Tweet to Store
-    dispatch(setAuthedUser(user));
-    this.setState(() => ({
-      user: "",
-    }));
+  handleLogout = (e) => {
+    this.props.dispatch(logout());
+    this.setState({ user: null });
   };
   render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
+    return this.props.authedUser === null ? (
+      <form onSubmit={this.handleLogin}>
         <select onChange={this.handleChange}>
-            <option value={null}>Select</option>
+          <option value={null}>Select</option>
           {this.props.users.map((user) => (
             <option key={user.id} value={user.id}>
               {user.name}
@@ -37,13 +33,18 @@ class Login extends React.Component {
         </select>
         <button>LOGIN</button>
       </form>
+    ) : (
+      <div>
+        <a href='#' onClick={this.handleLogout}>Logout</a>
+      </div>
     );
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
   return {
     users: Object.values(users),
+    authedUser,
   };
 }
 
