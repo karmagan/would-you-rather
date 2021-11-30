@@ -1,14 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
+import Poll from "./Poll";
 
 class PollsList extends React.Component {
   render() {
-    console.log(this.props.polls)
+    const { polls } = this.props;
     return (
       <div>
         <ul>
-          {this.props.polls.map((poll) => (
-             <li key={poll.id}>{poll.author} asks - {poll.id}</li>
+          {polls.map((poll) => (
+            <li key={poll.id}>
+              <Poll poll={poll} />
+            </li>
           ))}
         </ul>
       </div>
@@ -16,9 +19,11 @@ class PollsList extends React.Component {
   }
 }
 
-function mapStateToProps({ questions },{pollsList}) {
+function mapStateToProps({ questions }, { pollsList }) {
   return {
-    polls: pollsList.map((poll)=>(questions[poll])).sort((a, b) => b.timestamp - a.timestamp),
+    polls: pollsList
+      .map((poll) => questions[poll])
+      .sort((a, b) => b.timestamp - a.timestamp),
   };
 }
 

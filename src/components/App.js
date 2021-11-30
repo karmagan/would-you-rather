@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import React from "react";
 import PollsHome from "./PollsHome";
+import Login from "./Login";
 
 class App extends React.Component {
   componentDidMount() {
@@ -10,17 +11,22 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <p>Welcome {this.props.authedUser && this.props.authedUser.name}</p>
-        <PollsHome />
+        <Login />
+        {this.props.authedUser && (
+          <div>
+            <p>Welcome {this.props.authedUser.name}</p>
+            <PollsHome />
+          </div>
+        )}
       </div>
     );
   }
 }
 
-function mapStateToProps({authedUser,users}){
-  return{
-    authedUser:users[authedUser]
-  }
+function mapStateToProps({ authedUser, users }) {
+  return {
+    authedUser: users[authedUser],
+  };
 }
 
 export default connect(mapStateToProps)(App);
