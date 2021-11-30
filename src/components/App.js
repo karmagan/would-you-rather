@@ -1,15 +1,26 @@
-import { getInitialData } from "../utils/api";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import React from "react";
+import PollsHome from "./PollsHome";
 
 class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
   }
   render() {
-    getInitialData().then((a) => console.log(a));
-    return <div className="App">App</div>;
+    return (
+      <div className="App">
+        <p>Welcome {this.props.authedUser && this.props.authedUser.name}</p>
+        <PollsHome />
+      </div>
+    );
   }
 }
-export default connect()(App);
+
+function mapStateToProps({authedUser,users}){
+  return{
+    authedUser:users[authedUser]
+  }
+}
+
+export default connect(mapStateToProps)(App);
