@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { logout, setAuthedUser } from "../actions/authedUser";
+import { Navigate } from "react-router-dom";
 
 class Login extends React.Component {
   state = {
-    user: null,
+    user: "",
   };
   handleChange = (e) => {
     const user = e.target.value;
@@ -18,12 +19,13 @@ class Login extends React.Component {
 
   handleLogout = (e) => {
     this.props.dispatch(logout());
-    this.setState({ user: null });
+    this.setState({ user: "" });
   };
   render() {
-    return this.props.authedUser === null ? (
+    return !this.props.authedUser ? (
+      <div className='login'>
       <form onSubmit={this.handleLogin}>
-        <select onChange={this.handleChange}>
+        <select value={this.state.user} onChange={this.handleChange}>
           <option value={null}>Select</option>
           {this.props.users.map((user) => (
             <option key={user.id} value={user.id}>
@@ -33,10 +35,9 @@ class Login extends React.Component {
         </select>
         <button>LOGIN</button>
       </form>
-    ) : (
-      <div>
-        <a href='#' onClick={this.handleLogout}>Logout</a>
       </div>
+    ) : (
+      <Navigate to="/" />
     );
   }
 }
@@ -44,7 +45,7 @@ class Login extends React.Component {
 function mapStateToProps({ users, authedUser }) {
   return {
     users: Object.values(users),
-    authedUser,
+    authedUser: users[authedUser],
   };
 }
 

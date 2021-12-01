@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  height:100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -12,19 +13,58 @@ code {
     monospace;
 }
 
-.polls-home{
-  margin:auto;
-  width:800px;
+.polls-tabs{
+  text-align: center;
 }
-.polls-home button{
-  width:50%;
-  background:transparent;
-  border:solid;
-}
-button:disabled{
+.polls-tabs button{
+  width:45%;
+  height:40px;
   background:lightgrey;
+  border:solid 1px;
+  transition: all 0.1s;
+}
+.polls-tabs .front{
+  background:white;
+  transform: scale(1.2) ;
+  /* height: 50px; */
+  box-shadow: 0px 0px 10px 0px gray;
+}
+.polls-tabs .back{
+
 }
 
 .polls-list{
   list-style: none;
+  padding: 0;
+}
+nav{
+  display:flex;
+  justify-content: space-between;
+  width:840px;
+  margin:auto;
+  background: lightskyblue;
+}
+nav a, nav button{
+  display:inline-block;
+  padding:10px 30px;
+  text-decoration: none;
+  border:solid 1px;
+  margin:10px ;
+  background:white;
+}
+
+.login{
+  width:300px;
+  align-content: center;
+  margin:auto;
+  padding:100px;
+  vertical-align: middle;
+}
+
+.container{
+  width:800px;
+  height:100%;
+  margin:auto;
+  padding:20px;
+  box-shadow: 0px 10px 15px 0px black;
 }
