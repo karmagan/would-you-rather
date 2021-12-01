@@ -24,7 +24,7 @@ code {
   transition: all 0.1s;
 }
 .polls-tabs .front{
-  background:white;
+  background:rgb(216, 121, 33);
   transform: scale(1.2) ;
   /* height: 50px; */
   box-shadow: 0px 0px 10px 0px gray;
@@ -36,6 +36,19 @@ code {
 .polls-list{
   list-style: none;
   padding: 0;
+}
+
+.polls-list a{
+  display:block;
+  text-decoration: none;
+  color:black;
+}
+
+.selected-option{
+  border:solid red;
+}
+.option{
+  border:solid black;
 }
 nav{
   display:flex;

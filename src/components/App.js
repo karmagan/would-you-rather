@@ -6,6 +6,7 @@ import Login from "./Login";
 import { Route, Routes } from "react-router";
 import Nav from "./Nav";
 import PollDetails from "./PollDetails";
+
 class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());

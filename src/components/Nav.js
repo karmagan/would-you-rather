@@ -1,30 +1,36 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../actions/authedUser";
 
-class Nav extends React.Component {
-  render() {
-    return (
-      <nav>
+function Nav(props) {
+  let navigate = useNavigate();
+  const handleLogout = () => {
+    props.dispatch(logout());
+    navigate("/login");
+  };
+  return (
+    <nav>
+      <div>
+        <Link to="/">Home</Link>
+      </div>
+      {props.user ? (
         <div>
-          <Link to="/">Home</Link>
-          
+          Welcome {props.user.name}
+          <button onClick={handleLogout}>Logout</button>
         </div>
-        {this.props.authedUser ? (
-          <div>
-            Welcome {this.props.authedUser.name} <button>Logout</button>
-          </div>
-        ) : (
-          <div>Please Login <Link to="/login">Login</Link></div>
-        )}
-      </nav>
-    );
-  }
+      ) : (
+        <div>
+          Please Login <Link to="/login">Login</Link>
+        </div>
+      )}
+    </nav>
+  );
 }
 
 function mapStateToProps({ users, authedUser }) {
   return {
-    authedUser: users[authedUser],
+    user: users[authedUser],
   };
 }
 

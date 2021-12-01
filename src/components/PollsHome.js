@@ -31,7 +31,7 @@ class PollsHome extends React.Component {
         </div>
         {this.state.unanswered === true ? (
           <div>
-            <PollsList pollsList={this.props.otherPolls} />
+            <PollsList pollsList={this.props.unansweredPolls} />
           </div>
         ) : (
           <div>
@@ -46,16 +46,15 @@ class PollsHome extends React.Component {
 function mapStateToProps({ questions, authedUser, users }) {
   const answeredPolls =
     authedUser !== null ? Object.keys(users[authedUser].answers) : [];
-  const otherPolls =
+  const unansweredPolls =
     authedUser !== null
       ? Object.values(questions)
           .filter((poll) => !answeredPolls.includes(poll.id))
           .map((poll) => poll.id)
       : [];
   return {
-    otherPolls,
+    unansweredPolls,
     answeredPolls,
-    authedUser,
   };
 }
 
