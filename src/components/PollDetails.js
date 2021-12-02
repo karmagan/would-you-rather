@@ -6,7 +6,7 @@ import PollDetailsUnanswered from "./PollDetailsUnanswered";
 
 function PollDetails(props) {
   const { id } = useParams();
-  const { answers } = props;
+  const { answers } = props.user;
   return (
     <div>
       {answers[id] ? (
@@ -20,7 +20,7 @@ function PollDetails(props) {
 
 function mapStateToProps({ users, authedUser }) {
   return {
-    answers : users[authedUser].answers
+    user: users[authedUser],
   };
 }
 

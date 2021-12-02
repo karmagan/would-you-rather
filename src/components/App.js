@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router";
 import Nav from "./Nav";
 import PollDetails from "./PollDetails";
 import NewQuestion from "./NewQuestion";
+import LeaderBoard from "./LeaderBoard";
 
 class App extends React.Component {
   componentDidMount() {
@@ -20,8 +21,21 @@ class App extends React.Component {
           <Routes>
             <Route path="/" element={<PollsHome />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/question/:id" element={<PollDetails />} />
-            <Route path="/newquestion" element={<NewQuestion />} />
+            <Route path="/leaderboard" element={<LeaderBoard />} />
+            {this.props.authedUser && (
+              <Route path="/question/:id" element={<PollDetails />} />
+            )}
+            {this.props.authedUser && (
+              <Route path="/newquestion" element={<NewQuestion />} />
+            )}
+            <Route
+              path="*"
+              element={
+                <main style={{ padding: "1rem" }}>
+                  <p>There's nothing here!</p>
+                </main>
+              }
+            />
           </Routes>
         </div>
       </div>
@@ -29,9 +43,9 @@ class App extends React.Component {
   }
 }
 
-function mapStateToProps({ authedUser, users }) {
+function mapStateToProps({ authedUser }) {
   return {
-    authedUser: users[authedUser],
+    authedUser,
   };
 }
 

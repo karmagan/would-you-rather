@@ -1,11 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Navigate } from "react-router";
 import { handleSaveQuestion } from "../actions/questions";
 
 class NewQuestion extends React.Component {
   state = {
     optionOne: "",
     optionTwo: "",
+    home: "",
   };
   handleChange = (e) => {
     this.setState({ [e.target.getAttribute("name")]: e.target.value });
@@ -19,6 +21,7 @@ class NewQuestion extends React.Component {
         author: this.props.authedUser,
       })
     );
+    this.setState({ home: "yes" });
   };
   render() {
     return (
@@ -27,6 +30,7 @@ class NewQuestion extends React.Component {
         onSubmit={this.handleSubmit}
         style={{ maxWidth: "800px" }}
       >
+        {this.state.home === "yes" && <Navigate to="/" />}
         <label htmlFor="optionOne" className="form-label">
           Option One
         </label>

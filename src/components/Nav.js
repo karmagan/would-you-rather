@@ -21,7 +21,7 @@ function Nav(props) {
           >
             Home
           </NavLink>
-    
+
           <NavLink
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
@@ -30,22 +30,38 @@ function Nav(props) {
           >
             New Question
           </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+            to="/leaderboard"
+          >
+            Leaderboard
+          </NavLink>
         </div>
         {props.user ? (
           <div>
-            <span className="navbar-text">Welcome {props.user.name}</span>
+            <span className="navbar-text mx-2">Welcome {props.user.name}</span>
+            <img
+              src={props.user.avatarURL}
+              className="mx-3"
+              alt={`Avatar of ${props.user.name}`}
+              style={{ maxWidth: "30px" }}
+            />
             <button className="btn btn-outline-danger" onClick={handleLogout}>
               Logout
             </button>
           </div>
         ) : (
           <div>
-            Please Login <Link className='btn btn-outline-success' to="/login">Login</Link>
+            Please Login{" "}
+            <Link className="btn btn-outline-success" to="/login">
+              Login
+            </Link>
           </div>
         )}
       </div>
     </nav>
-
   );
 }
 

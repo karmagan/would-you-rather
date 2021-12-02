@@ -11,8 +11,8 @@ class PollsHome extends React.Component {
     this.setState({ unanswered: Boolean(e.target.value) });
   };
   render() {
-    return (
-      <div className="polls-home">
+    return this.props.authedUser ? (
+      <div className="my-3">
         <div className="nav nav-tabs">
           <button
             value=""
@@ -39,7 +39,9 @@ class PollsHome extends React.Component {
           </div>
         )}
       </div>
-    );
+    ) : (
+      <h1 className='text-center'>Please login to see the polls!</h1>
+    )
   }
 }
 
@@ -53,6 +55,7 @@ function mapStateToProps({ questions, authedUser, users }) {
           .map((poll) => poll.id)
       : [];
   return {
+    authedUser,
     unansweredPolls,
     answeredPolls,
   };
