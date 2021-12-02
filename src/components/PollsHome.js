@@ -11,7 +11,7 @@ class PollsHome extends React.Component {
     this.setState({ unanswered: Boolean(e.target.value) });
   };
   render() {
-    return this.props.authedUser ? (
+    return (
       <div className="my-3">
         <div className="nav nav-tabs">
           <button
@@ -39,9 +39,7 @@ class PollsHome extends React.Component {
           </div>
         )}
       </div>
-    ) : (
-      <h1 className='text-center'>Please login to see the polls!</h1>
-    )
+    );
   }
 }
 

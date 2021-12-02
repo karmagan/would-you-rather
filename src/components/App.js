@@ -19,21 +19,26 @@ class App extends React.Component {
         <Nav />
         <div className="container">
           <Routes>
-            <Route path="/" element={<PollsHome />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/leaderboard" element={<LeaderBoard />} />
             {this.props.authedUser && (
-              <Route path="/question/:id" element={<PollDetails />} />
+              <Route path="/" element={<PollsHome />} />
+            )}
+            <Route path="/login" element={<Login />} />
+            {this.props.authedUser && (
+              <Route path="/leaderboard" element={<LeaderBoard />} />
             )}
             {this.props.authedUser && (
-              <Route path="/newquestion" element={<NewQuestion />} />
+              <Route path="/questions/:id" element={<PollDetails />} />
+            )}
+            {this.props.authedUser && (
+              <Route path="/add" element={<NewQuestion />} />
             )}
             <Route
               path="*"
               element={
-                <main style={{ padding: "1rem" }}>
-                  <p>There's nothing here!</p>
-                </main>
+                <h1 className="text-center">
+                  {" "}
+                  Please login to see the content.
+                </h1>
               }
             />
           </Routes>

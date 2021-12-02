@@ -8,7 +8,7 @@ class Poll extends React.Component {
     return (
       <Link
         className="card text-decoration-none link-dark m-3"
-        to={`/question/${id}`}
+        to={`/questions/${id}`}
         style={{ width: "400px" }}
       >
         <div className="card-header">

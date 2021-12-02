@@ -5,7 +5,8 @@ import Leader from "./Leader";
 class LeaderBoard extends React.Component {
   render() {
     return (
-      <div>
+      <div className='mx-auto my-3' style={{ maxWidth: "800px" }}>
+        <h1>Leaderboard</h1>
         {Object.values(this.props.users)
           .sort(
             (a, b) =>

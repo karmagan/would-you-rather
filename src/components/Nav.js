@@ -26,9 +26,9 @@ function Nav(props) {
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
-            to="/newquestion"
+            to="/add"
           >
-            New Question
+            New Poll
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -48,14 +48,14 @@ function Nav(props) {
               alt={`Avatar of ${props.user.name}`}
               style={{ maxWidth: "30px" }}
             />
-            <button className="btn btn-outline-danger" onClick={handleLogout}>
+            <button className="btn btn-sm btn-outline-danger" onClick={handleLogout}>
               Logout
             </button>
           </div>
         ) : (
           <div>
             Please Login{" "}
-            <Link className="btn btn-outline-success" to="/login">
+            <Link className="btn btn-sm btn-outline-success" to="/login">
               Login
             </Link>
           </div>

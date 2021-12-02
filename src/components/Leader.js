@@ -5,7 +5,7 @@ class Leader extends React.Component {
     return (
       <div
         className="d-flex justify-content-between mx-auto border my-3"
-        style={{ maxWidth: "800px" }}
+        
       >
         <img
             src={this.props.avatar}

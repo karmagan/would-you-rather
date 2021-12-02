@@ -24,7 +24,6 @@ class PollDetailsUnanswered extends React.Component {
       <div className="card mx-auto my-3 " style={{ maxWidth: "800px" }}>
         <div className="card-header">
           <h6 className="card-title">{authorname} asks</h6>
-          <h6 className="card-subtitle">Would you rather:</h6>
         </div>
         <div className="d-flex">
           <img
@@ -34,7 +33,8 @@ class PollDetailsUnanswered extends React.Component {
             style={{ maxWidth: "300px" }}
           />
           <form className="card-body" onSubmit={this.handleSubmit}>
-            <div className="form-check">
+            <h3 className="card-subtitle">Would you rather:</h3>
+            <div className="form-check my-3">
               <input
                 className="form-check-input"
                 id="optionOne"
@@ -54,7 +54,7 @@ class PollDetailsUnanswered extends React.Component {
                 {question.optionOne.text}
               </label>
             </div>
-            <div className="form-check">
+            <div className="form-check my-3">
               <input
                 className="form-check-input"
                 id="optionTwo"
@@ -87,7 +87,7 @@ function mapStateToProps({ users, questions, authedUser }, { qid }) {
     authedUser,
     question: questions[qid],
     authorname: users[questions[qid].author].name,
-    authoravatar:users[questions[qid].author].avatarURL
+    authoravatar: users[questions[qid].author].avatarURL,
   };
 }
 

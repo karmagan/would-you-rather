@@ -6,12 +6,12 @@ class PollDetailsAnswered extends React.Component {
     const { question, user, authorname, authoravatar } = this.props;
     const answer = user.answers[question.id];
     return (
-      <div className="card mx-auto" style={{ maxWidth: "800px" }}>
+      <div className="card mx-auto my-3" style={{ maxWidth: "800px" }}>
         <div className="card-header">
           <h6>{authorname} asks:</h6>
         </div>
-        <div className='d-flex'>
-        <img
+        <div className="d-flex">
+          <img
             src={authoravatar}
             className="card-img-top"
             alt={`Avatar of ${authorname}`}
@@ -67,7 +67,7 @@ function mapStateToProps({ questions, users, authedUser }, { qid }) {
   return {
     question: questions[qid],
     authorname: users[questions[qid].author].name,
-    authoravatar:users[questions[qid].author].avatarURL,
+    authoravatar: users[questions[qid].author].avatarURL,
     user: users[authedUser],
   };
 }

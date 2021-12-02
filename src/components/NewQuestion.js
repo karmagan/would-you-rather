@@ -25,37 +25,37 @@ class NewQuestion extends React.Component {
   };
   render() {
     return (
-      <form
-        className=" mx-auto my-3 border p-3 shadow"
-        onSubmit={this.handleSubmit}
-        style={{ maxWidth: "800px" }}
-      >
-        {this.state.home === "yes" && <Navigate to="/" />}
-        <label htmlFor="optionOne" className="form-label">
-          Option One
-        </label>
-        <input
-          id="optionOne"
-          className="form-control"
-          type="text"
-          name="optionOne"
-          onChange={this.handleChange}
-          value={this.state.optionOne}
-        />
-        <label htmlFor="optionTwo" className="form-label">
-          Option Two
-        </label>
+      <div className="mx-auto my-3 " style={{ maxWidth: "800px" }}>
+        <h1>New Poll</h1>
+        <form className="border p-3 shadow" onSubmit={this.handleSubmit}>
+          {this.state.home === "yes" && <Navigate to="/" />}
+          <h3>Would You Rather</h3>
+          <label htmlFor="optionOne" className="form-label">
+            Option One
+          </label>
+          <input
+            id="optionOne"
+            className="form-control"
+            type="text"
+            name="optionOne"
+            onChange={this.handleChange}
+            value={this.state.optionOne}
+          />
+          <label htmlFor="optionTwo" className="form-label">
+            Option Two
+          </label>
 
-        <input
-          id="optionTwo"
-          className="form-control"
-          type="text"
-          name="optionTwo"
-          onChange={this.handleChange}
-          value={this.state.optionTwo}
-        />
-        <button className=" btn btn-primary">Submit Question</button>
-      </form>
+          <input
+            id="optionTwo"
+            className="form-control"
+            type="text"
+            name="optionTwo"
+            onChange={this.handleChange}
+            value={this.state.optionTwo}
+          />
+          <button className=" btn btn-primary">Submit Poll</button>
+        </form>
+      </div>
     );
   }
 }
