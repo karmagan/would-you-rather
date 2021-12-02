@@ -24,16 +24,16 @@ class Login extends React.Component {
   render() {
     return !this.props.authedUser ? (
       <div className='login'>
-      <form onSubmit={this.handleLogin}>
-        <select value={this.state.user} onChange={this.handleChange}>
-          <option value={null}>Select</option>
+      <form className='mx-auto my-3 p-3' onSubmit={this.handleLogin} style={{maxWidth:'500px'}}>
+        <select className='form-control' value={this.state.user} onChange={this.handleChange}>
+          <option value={null}>Select user </option>
           {this.props.users.map((user) => (
             <option key={user.id} value={user.id}>
               {user.name}
             </option>
           ))}
         </select>
-        <button>LOGIN</button>
+        <button className='form-control btn btn-primary my-1'>LOGIN</button>
       </form>
       </div>
     ) : (

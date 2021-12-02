@@ -6,14 +6,10 @@ class PollsList extends React.Component {
   render() {
     const { polls } = this.props;
     return (
-      <div>
-        <ul className='polls-list'>
+      <div className='d-flex flex-wrap '>
           {polls.map((poll) => (
-            <li key={poll.id}>
-              <Poll poll={poll} />
-            </li>
+              <Poll key={poll.id} poll={poll} />
           ))}
-        </ul>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { logout } from "../actions/authedUser";
 
 function Nav(props) {
@@ -10,21 +10,42 @@ function Nav(props) {
     navigate("/login");
   };
   return (
-    <nav>
-      <div>
-        <Link to="/">Home</Link>
+    <nav className="navbar navbar-expand-sm navbar-dark bg-dark ">
+      <div className="container">
+        <div className="navbar-nav">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+            to="/"
+          >
+            Home
+          </NavLink>
+    
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+            to="/newquestion"
+          >
+            New Question
+          </NavLink>
+        </div>
+        {props.user ? (
+          <div>
+            <span className="navbar-text">Welcome {props.user.name}</span>
+            <button className="btn btn-outline-danger" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div>
+            Please Login <Link className='btn btn-outline-success' to="/login">Login</Link>
+          </div>
+        )}
       </div>
-      {props.user ? (
-        <div>
-          Welcome {props.user.name}
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      ) : (
-        <div>
-          Please Login <Link to="/login">Login</Link>
-        </div>
-      )}
     </nav>
+
   );
 }
 

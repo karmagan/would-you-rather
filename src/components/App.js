@@ -6,6 +6,7 @@ import Login from "./Login";
 import { Route, Routes } from "react-router";
 import Nav from "./Nav";
 import PollDetails from "./PollDetails";
+import NewQuestion from "./NewQuestion";
 
 class App extends React.Component {
   componentDidMount() {
@@ -17,9 +18,10 @@ class App extends React.Component {
         <Nav />
         <div className="container">
           <Routes>
+            <Route path="/" element={<PollsHome />} />
             <Route path="/login" element={<Login />} />
             <Route path="/question/:id" element={<PollDetails />} />
-            <Route path="/" element={<PollsHome />} />
+            <Route path="/newquestion" element={<NewQuestion />} />
           </Routes>
         </div>
       </div>

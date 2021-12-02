@@ -21,36 +21,60 @@ class PollDetailsUnanswered extends React.Component {
   render() {
     const { question, authorname } = this.props;
     return (
-      <div style={{ border: "solid", margin: "10px", padding: "10px" }}>
-        <h3>{authorname} asks:</h3>
-        <h2>Would you rather:</h2>
-
-        <form onSubmit={this.handleSubmit}>
-          <input
-            id="optionOne"
-            type="radio"
-            value="optionOne"
-            checked={this.state.answer === 'optionOne'}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="optionOne">{question.optionOne.text}</label>
-          <br />
-          <input
-            id="optionTwo"
-            type="radio"
-            value="optionTwo"
-            checked={this.state.answer === 'optionTwo'}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="optionTwo">{question.optionTwo.text}</label>
-          <button>Submit</button>
+      <div className="card mx-auto my-3 " style={{maxWidth:'800px'}}>
+        <div className="card-header">
+          <h6 className='card-title'>{authorname} asks</h6>
+          <h6 className='card-subtitle'>Would you rather:</h6>
+        </div>
+        <form className="card-body" onSubmit={this.handleSubmit}>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              id="optionOne"
+              type="radio"
+              value="optionOne"
+              checked={this.state.answer === "optionOne"}
+              onChange={this.handleChange}
+            />
+            <label
+              className={
+                this.state.answer === "optionOne"
+                  ? "form-check-label text-success"
+                  : "form-check-label"
+              }
+              htmlFor="optionOne"
+            >
+              {question.optionOne.text}
+            </label>
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              id="optionTwo"
+              type="radio"
+              value="optionTwo"
+              checked={this.state.answer === "optionTwo"}
+              onChange={this.handleChange}
+            />
+            <label
+              className={
+                this.state.answer === "optionTwo"
+                  ? "form-check-label text-success"
+                  : "form-check-label"
+              }
+              htmlFor="optionTwo"
+            >
+              {question.optionTwo.text}
+            </label>
+          </div>
+          <button className="form-control btn btn-primary">Submit</button>
         </form>
       </div>
     );
   }
 }
 
-function mapStateToProps({ users,questions, authedUser }, { qid }) {
+function mapStateToProps({ users, questions, authedUser }, { qid }) {
   return {
     authedUser,
     question: questions[qid],

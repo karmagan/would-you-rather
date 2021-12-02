@@ -5,12 +5,20 @@ class Poll extends React.Component {
   render() {
     const { optionOne, optionTwo, id, author } = this.props.poll;
     return (
-      <Link className='post' to={`/question/${id}`} style={{ border: "solid", margin: "10px", padding: "10px" }}>
-        <h3>{author} asks</h3>
-        <h2>Would you rather:</h2>
-        <p>
-          {optionOne.text} or {optionTwo.text}
-        </p>
+      <Link
+        className="card text-decoration-none link-dark m-3"
+        to={`/question/${id}`}
+        style={{width:'400px'}}
+      >
+        <div className="card-header">
+          <h5 className="card-title">{author} asks</h5>
+        </div>
+        <div className="card-body">
+          <h6 className="card-subtitle">Would you rather:</h6>
+          <p className="card-text">
+            {optionOne.text} or {optionTwo.text}
+          </p>
+        </div>
       </Link>
     );
   }

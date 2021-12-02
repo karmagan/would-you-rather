@@ -13,18 +13,18 @@ class PollsHome extends React.Component {
   render() {
     return (
       <div className="polls-home">
-        <div className="polls-tabs">
+        <div className="nav nav-tabs">
           <button
             value=""
             onClick={this.changeView}
-            className={!this.state.unanswered ? "front" : "back"}
+            className={!this.state.unanswered ? "nav-link active" : "nav-link"}
           >
             Answered Polls
           </button>
           <button
             value="true"
             onClick={this.changeView}
-            className={this.state.unanswered ? "front" : "back"}
+            className={this.state.unanswered ? "nav-link active" : "nav-link"}
           >
             Unanswered Polls
           </button>
