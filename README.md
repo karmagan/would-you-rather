@@ -10,3 +10,7 @@ To use the app:
 
 * install with `npm install`
 * start the server with `npm start`
+
+## Acknowledgements
+
+I used bootstrap css for my styling and I obtained avatar image URLs from [w3schools](https://www.w3schools.com/howto/howto_css_image_avatar.asp)
