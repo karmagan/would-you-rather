@@ -22,22 +22,32 @@ class Login extends React.Component {
     this.setState({ user: "" });
   };
   render() {
+    const from = this.props.from;
     return !this.props.authedUser ? (
-      <div className='login'>
-      <form className='mx-auto my-3 p-3' onSubmit={this.handleLogin} style={{maxWidth:'500px'}}>
-        <select className='form-control' value={this.state.user} onChange={this.handleChange}>
-          <option value={null}>Select user </option>
-          {this.props.users.map((user) => (
-            <option key={user.id} value={user.id}>
-              {user.name}
-            </option>
-          ))}
-        </select>
-        <button className='form-control btn btn-primary my-1'>LOGIN</button>
-      </form>
+      <div className="login">
+        {from && <h3 className='text-center'>You need to login before accessing this page!</h3>}
+        <form
+          className="mx-auto my-3 p-3"
+          onSubmit={this.handleLogin}
+          style={{ maxWidth: "500px" }}
+        >
+          <select
+            className="form-control"
+            value={this.state.user}
+            onChange={this.handleChange}
+          >
+            <option value={null}>Select user </option>
+            {this.props.users.map((user) => (
+              <option key={user.id} value={user.id}>
+                {user.name}
+              </option>
+            ))}
+          </select>
+          <button className="form-control btn btn-primary my-1">LOGIN</button>
+        </form>
       </div>
     ) : (
-      <Navigate to="/" />
+      <Navigate to={from ? from : '/'} />
     );
   }
 }
