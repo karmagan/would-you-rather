@@ -8,12 +8,16 @@ class NewQuestion extends React.Component {
     optionOne: "",
     optionTwo: "",
     home: "",
+    error:''
   };
   handleChange = (e) => {
-    this.setState({ [e.target.getAttribute("name")]: e.target.value });
+    this.setState({ [e.target.getAttribute("name")]: e.target.value, error:'' });
   };
   handleSubmit = (e) => {
     e.preventDefault();
+    if(this.state.optionOne===this.state.optionTwo){
+      this.setState({error:'Option One and Option Two are the same.'})
+    }else{
     this.props.dispatch(
       handleSaveQuestion({
         optionOneText: this.state.optionOne,
@@ -22,6 +26,7 @@ class NewQuestion extends React.Component {
       })
     );
     this.setState({ home: "yes" });
+    }
   };
   render() {
     return (
@@ -53,7 +58,8 @@ class NewQuestion extends React.Component {
             onChange={this.handleChange}
             value={this.state.optionTwo}
           />
-          <button className=" btn btn-primary">Submit Poll</button>
+          <button className=" btn btn-primary" disabled={this.state.optionOne===''||this.state.optionTwo===''}>Submit Poll</button>
+          {this.state.error && <h3 className='text-center text-danger'>{this.state.error}</h3>}
         </form>
       </div>
     );
